@@ -6,6 +6,10 @@
 #include <functional>
 #include <vector>
 #include <iostream>
+#include <SFML/System.hpp>
+
+using sf::Mutex;
+using sf::Lock;
 
 //// шаблон функции подписчика
 using Subscriber = std::function<void()>;
@@ -42,6 +46,7 @@ private:
     State m_state{};
     Subscribers m_subscribers{};
     Reducer m_reducer{};
+    Mutex m_mutex{};
 
     static Store *m_store;
 

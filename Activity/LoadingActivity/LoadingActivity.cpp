@@ -1,20 +1,69 @@
 #include "LoadingActivity.h"
 
-void LoadingActivity::start() {
-    std::cout << "All good!" << std::endl;
+void LoadingActivity::_init() {
+    m_is_runnning = true;
+
+    m_window = new RenderWindow(
+            VideoMode(800, 500),
+            "LoadingScreen",
+            StyleWindow::None
+    );
+
+    m_window->setVerticalSyncEnabled(true);
+
+    m_components.push_back(
+            new LoadingScreen()
+    );
+}
+
+void LoadingActivity::start(MapActivity *map_activity) {
+    _init();
+
+    // запуск демона отложенного события
+    // он закроет окно после 5 секунд
+    Thread postpone_event_daemon(
+            std::bind(
+                    &postponeEventDaemon,
+                    3,
+                    [this]() { m_is_runnning = false; }
+            )
+    );
+    postpone_event_daemon.launch();
+
+    while (m_window->isOpen() && m_is_runnning) {
+
+        Event event{};
+
+        while (m_window->pollEvent(event)) {
+            switch (event.type) {
+                case Event::Closed: {
+                    m_window->close();
+                    break;
+                }
+            }
+        }
+
+        render();
+
+        m_window->display();
+    }
+
+    m_store->dispatch(setIntentOpenActivity(map_activity->at(IDActivity::MAIN)));
+
+    delete m_window;
+    m_window = nullptr;
 }
 
 void LoadingActivity::render() {
+    m_window->clear(Color::White);
 
+    for (auto item : m_components) {
+        item->render(m_window);
+    }
 }
 
-void LoadingActivity::_init() {
-
-}
-
-LoadingActivity::LoadingActivity() {
-    _init();
-}
+LoadingActivity::LoadingActivity()
+        : m_store(Store::getStore()) {}
 
 LoadingActivity *LoadingActivity::createActivity() {
     static auto *loadingActivity = new LoadingActivity();

@@ -12,7 +12,7 @@ public:
 
     static AlarmClockActivity *createActivity();
 
-    void start() override;
+    void start(MapActivity *map_activity) override;
 
     void render() override;
 

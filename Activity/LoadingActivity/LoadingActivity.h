@@ -2,6 +2,8 @@
 #define CLOCK_LOADINGACTIVITY_H
 
 #include <BaseActivity.h>
+#include <LoadingScreen/LoadingScreen.h>
+
 
 class LoadingActivity : public BaseActivity {
 public:
@@ -11,12 +13,18 @@ public:
 
     static LoadingActivity *createActivity();
 
-    void start() override;
+    void start(MapActivity *map_activity) override;
 
     void render() override;
 
 private:
     Store *m_store{};
+
+    RenderWindow *m_window{};
+
+    ComponentsList m_components{};
+
+    bool m_is_runnning{};
 
     LoadingActivity();
 

@@ -13,6 +13,10 @@ include_directories(Activity)
 
 include_directories(daemons)
 
+include_directories(Components)
+
+add_subdirectory(Components)
+
 add_subdirectory(daemons)
 
 add_subdirectory(Activity)
@@ -38,7 +42,6 @@ add_executable(${PROJECT_NAME} main.cpp ${SRC})
 target_link_libraries(
         ${PROJECT_NAME}
         Store
-        global
         App
         Activity
         sfml-graphics

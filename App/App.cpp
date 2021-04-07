@@ -8,7 +8,7 @@ void App::_init() {
             {IDActivity::ALARM_CLOCK_SIGNAL, AlarmClockActivity::createActivity()}
     };
 
-    m_current_activity = m_map_activity->at(IDActivity::LOADING);
+    m_current_activity = static_cast<BaseActivity *>(m_map_activity->at(IDActivity::LOADING));
 }
 
 App::App()
@@ -36,7 +36,7 @@ int App::start() {
     m_is_running = true;
 
     while (m_is_running) {
-        m_current_activity->start();
+        m_current_activity->start(m_map_activity);
 
         _activityTransaction();
     }
@@ -106,7 +106,7 @@ void App::_activityTransaction() {
         // преобразовываем неопределённый указатель void
         // в указатель на новый экран
         // и кладём в текущий
-        m_current_activity = m_map_activity->at(*m_store->getState().app_state.intent_open_activity);
+        m_current_activity = static_cast<BaseActivity *>(m_store->getState().app_state.intent_open_activity);
 
         // обнуляем указатель на следующий экран
         // отправляем действие в диспач

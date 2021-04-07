@@ -31,7 +31,7 @@ AppState appReducer(AppState state, Action action) {
             return state;
         }
         case ActionTypes::SET_INTENT_OPEN_ACTIVITY: {
-            state.intent_open_activity = static_cast<IDActivity *>(action.data);
+            state.intent_open_activity = action.data;
             return state;
         }
         case ActionTypes::CLEAR_INTENT_OPEN_ACTIVITY: {

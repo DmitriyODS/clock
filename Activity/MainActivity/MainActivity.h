@@ -14,7 +14,7 @@ public:
 
     void render() override;
 
-    void start() override;
+    void start(MapActivity *map_activity) override;
 
 private:
     Store *m_store{};

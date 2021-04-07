@@ -37,6 +37,8 @@ find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED
 
 include_directories(../SFML/include)
 
+include_directories(../Components)
+
 add_library(
         ${PROJECT_NAME}
         ${LOADING_ACTIVITY}
@@ -44,3 +46,5 @@ add_library(
         ${MAIN_ACTIVITY}
         ${ALARM_CLOCK_ACTIVITY}
 )
+
+target_link_libraries(${PROJECT_NAME} Components)

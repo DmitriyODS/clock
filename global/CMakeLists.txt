@@ -3,7 +3,7 @@ project(global)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(GLOB_TYPES globalTypes.cpp globalTypes.h config.h)
+set(GLOB_TYPES globalTypes.cpp globalTypes.h config.h paths.h)
 
 set(SFML_DIR "../SFML/lib/cmake/SFML")
 

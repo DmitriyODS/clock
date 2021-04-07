@@ -4,7 +4,7 @@ void AlarmClockActivity::render() {
 
 }
 
-void AlarmClockActivity::start() {
+void AlarmClockActivity::start(MapActivity *map_activity) {
 
 }
 

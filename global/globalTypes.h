@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <map>
+#include <ctime>
 
 using sf::Color;
 using sf::Uint32;
@@ -12,13 +13,13 @@ using std::map;
 using std::vector;
 
 //// тип времени
-using ClockTime = time_t;
+using ClockTime = std::time_t;
 
 //// тип id
 using ID = unsigned int;
 
 //// Id activity
-enum class IDActivity {
+enum IDActivity : int {
     LOADING,
     MAIN,
     ALARM_CLOCK_SIGNAL

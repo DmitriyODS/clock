@@ -32,7 +32,7 @@ Action setAppName(string *app_name);
 Action darkMode(bool *is_dark);
 
 //// возвращает событие открытия новой активности
-Action setIntentOpenActivity(IDActivity *idActivity);
+Action setIntentOpenActivity(void *activity);
 
 //// возвращает событие очистка открытия новой активности
 Action clearIntentOpenActivity();

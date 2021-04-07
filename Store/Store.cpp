@@ -39,6 +39,8 @@ void Store::subscribe(Subscriber callback) {
 }
 
 void Store::dispatch(Action action) {
+    Lock lock(m_mutex);
+
     m_state = m_reducer(m_state, action);
 
     for (const auto &sub : m_subscribers) {

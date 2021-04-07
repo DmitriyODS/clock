@@ -14,7 +14,7 @@ struct AppState {
     Size size_main_window{};
     string app_name{};
     bool dark_mode{};
-    IDActivity *intent_open_activity{};
+    void *intent_open_activity{};
     bool intent_push_activity{};
     void *intent_data{};
 };
