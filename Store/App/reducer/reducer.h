@@ -1,10 +1,13 @@
-#ifndef CLOCK_REDUCER_H
-#define CLOCK_REDUCER_H
+#ifndef APP_REDUCER_H
+#define APP_REDUCER_H
 
 #include <Action.h>
 #include <App/State/State.h>
 
 //// reducer для объекта app
-AppState appReducer(AppState app_state, Action action);
+AppState appReducer(
+        AppState state = AppState{},
+        Action action = Action{ActionTypes::INITIAL_STATE}
+);
 
-#endif //CLOCK_REDUCER_H
+#endif //APP_REDUCER_H

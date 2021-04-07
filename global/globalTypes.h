@@ -2,9 +2,18 @@
 #define CLOCK_GLOBALTYPES_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 using sf::Color;
 using sf::Uint32;
+
+using std::vector;
+
+//// тип времени
+using ClockTime = time_t;
+
+//// тип id
+using ID = unsigned int;
 
 /*
  * Храним главные цвета приложения
@@ -23,6 +32,8 @@ struct ColorClock {
     Color hour{};
     Color minutes{};
     Color seconds{};
+    Color text{};
+    Color background{};
 };
 
 /*
@@ -31,6 +42,30 @@ struct ColorClock {
 struct Size {
     Uint32 width;
     Uint32 height;
+};
+
+/*
+ * Тип будильника
+ */
+struct AlarmClock {
+    static ID current_id;
+
+    ID id{};
+    int position{};
+    ClockTime end_time{};
+    bool enabled{};
+};
+
+//// Лист будильников
+using AlarmClocks = vector<AlarmClock *>;
+
+//// Id пунктов главного меню
+enum class ItemMenuId {
+    CLOCK,
+    ALARM_CLOCK,
+    STOPWATCH,
+    TIMER,
+    SETTINGS
 };
 
 #endif //CLOCK_GLOBALTYPES_H

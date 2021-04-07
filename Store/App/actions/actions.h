@@ -1,8 +1,11 @@
-#ifndef CLOCK_ACTIONS_H
-#define CLOCK_ACTIONS_H
+#ifndef APP_ACTIONS_H
+#define APP_ACTIONS_H
 
 #include <Action.h>
+#include <string>
 #include <globalTypes.h>
+
+using std::string;
 
 // прописываем функции, которые будут
 // создавать действия для нашего dispatch
@@ -22,4 +25,10 @@ Action setColorAccent(Color *color);
 //// возвращает событие изменение размера окна
 Action setSizeMainWindow(Size *size);
 
-#endif //CLOCK_ACTIONS_H
+//// возвращает событие установки названия приложения
+Action setAppName(string *app_name);
+
+//// возвращает событие переключателя тёмной темы
+Action darkMode(bool *is_dark);
+
+#endif //APP_ACTIONS_H

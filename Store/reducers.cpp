@@ -6,19 +6,29 @@ State reducers(State state, Action action) {
             state.app_state = appReducer(state.app_state, action);
             return state;
         case ReducerTypes::CLOCK:
-            state.app_state = appReducer(state.app_state, action);
+            state.clock_state = clockReducer(state.clock_state, action);
             return state;
-        case ReducerTypes::CLOCK_ALARM:
-            state.app_state = appReducer(state.app_state, action);
+        case ReducerTypes::ALARM_CLOCK:
+            state.alarm_clock_state = alarmClockReducer(state.alarm_clock_state, action);
             return state;
         case ReducerTypes::MAIN_MENU:
-            state.app_state = appReducer(state.app_state, action);
+            state.main_menu_state = mainMenuReducer(state.main_menu_state, action);
             return state;
         case ReducerTypes::STOPWATCH:
-            state.app_state = appReducer(state.app_state, action);
+            state.stopwatch_state = stopwatchReducer(state.stopwatch_state, action);
             return state;
         case ReducerTypes::TIMER:
-            state.app_state = appReducer(state.app_state, action);
+            state.timer_state = timerReducer(state.timer_state, action);
+            return state;
+        case ReducerTypes::ALL:
+            state.app_state = appReducer();
+            state.clock_state = clockReducer();
+            state.alarm_clock_state = alarmClockReducer();
+            state.main_menu_state = mainMenuReducer();
+            state.timer_state = timerReducer();
+            state.stopwatch_state = stopwatchReducer();
+            return state;
+        default:
             return state;
     }
 }

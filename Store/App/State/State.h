@@ -1,14 +1,19 @@
-#ifndef CLOCK_STATE_H
-#define CLOCK_STATE_H
+#ifndef APP_STATE_H
+#define APP_STATE_H
 
 #include <globalTypes.h>
+#include <string>
 
-// здесь мы описываем все поля,
-// которые являются состоянием
-// для текущей логической единицы
+using std::string;
+
+/*
+ * Описываем все состояния нашего объекта app
+ */
 struct AppState {
     ColorApp color_app{};
     Size size_main_window{};
+    string app_name{};
+    bool dark_mode{};
 };
 
-#endif //CLOCK_STATE_H
+#endif //APP_STATE_H

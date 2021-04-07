@@ -39,3 +39,19 @@ Action setSizeMainWindow(Size *size) {
             size
     };
 }
+
+Action setAppName(string *app_name) {
+    return Action{
+            ActionTypes::SET_APP_NAME,
+            ReducerTypes::APP,
+            app_name
+    };
+}
+
+Action darkMode(bool *is_dark) {
+    return Action{
+            ActionTypes::DARK_MODE,
+            ReducerTypes::APP,
+            is_dark
+    };
+}
