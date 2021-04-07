@@ -8,10 +8,10 @@
 #include <iostream>
 
 //// шаблон функции подписчика
-using Subscrabe = std::function<void()>;
+using Subscriber = std::function<void()>;
 
 //// лист функций подписчиков
-using Subscrabes = std::vector<Subscrabe>;
+using Subscribers = std::vector<Subscriber>;
 
 class Store {
 public:
@@ -31,7 +31,7 @@ public:
     State getState();
 
     //// добавляем нового подписчика
-    void subscrabe(Subscrabe callback);
+    void subscribe(Subscriber callback);
 
     //// вызываем событие
     void dispatch(Action action);
@@ -40,7 +40,7 @@ private:
     explicit Store(Reducer reducer);
 
     State m_state{};
-    Subscrabes m_subscrabes{};
+    Subscribers m_subscribers{};
     Reducer m_reducer{};
 
     static Store *m_store;

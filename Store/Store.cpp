@@ -34,14 +34,14 @@ State Store::getState() {
     return m_state;
 }
 
-void Store::subscrabe(Subscrabe callback) {
-    m_subscrabes.push_back(callback);
+void Store::subscribe(Subscriber callback) {
+    m_subscribers.push_back(callback);
 }
 
 void Store::dispatch(Action action) {
     m_state = m_reducer(m_state, action);
 
-    for (const auto &sub : m_subscrabes) {
+    for (const auto &sub : m_subscribers) {
         sub();
     }
 }
