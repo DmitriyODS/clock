@@ -55,3 +55,47 @@ Action darkMode(bool *is_dark) {
             is_dark
     };
 }
+
+Action setIntentOpenActivity(IDActivity *idActivity) {
+    return Action{
+            ActionTypes::SET_INTENT_OPEN_ACTIVITY,
+            ReducerTypes::APP,
+            idActivity
+    };
+}
+
+Action clearIntentOpenActivity() {
+    return Action{
+            ActionTypes::CLEAR_INTENT_OPEN_ACTIVITY,
+            ReducerTypes::APP
+    };
+}
+
+Action setIntentData(void *data) {
+    return Action{
+            ActionTypes::SET_INTENT_DATA,
+            ReducerTypes::APP,
+            data
+    };
+}
+
+Action clearIntentData() {
+    return Action{
+            ActionTypes::CLEAR_INTENT_DATA,
+            ReducerTypes::APP,
+    };
+}
+
+Action pushStackActivity() {
+    return Action{
+            ActionTypes::PUSH_CURRENT_ACTIVITY_STACK,
+            ReducerTypes::APP
+    };
+}
+
+Action clearPushStackActivity() {
+    return Action{
+            ActionTypes::CLEAR_PUSH_ACTIVITY_FLAG,
+            ReducerTypes::APP
+    };
+}

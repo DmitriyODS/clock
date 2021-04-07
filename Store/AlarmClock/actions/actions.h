@@ -16,4 +16,10 @@ Action editAlarmClockById(AlarmClock *alarm_clock);
 //// возврщает событие удаление будильника
 Action deleteAlarmClockById(AlarmClock *alarm_clock);
 
+//// возвращает событие запуска демона будильника
+Action runAlarmClockDaemon();
+
+//// возвращает событие остановки демона будильника
+Action stopAlarmClockDaemon();
+
 #endif //ALARM_CLOCK_ACTIONS_H

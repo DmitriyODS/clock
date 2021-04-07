@@ -9,6 +9,7 @@
 struct StopwatchState {
     ClockTime current_time{};
     bool enabled{};
+    bool run_stopwatch_daemon{};
 };
 
 #endif //STOPWATCH_STATE_H

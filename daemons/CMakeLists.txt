@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.17)
-project(global)
+project(daemons)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(GLOB_TYPES globalTypes.cpp globalTypes.h config.h)
+set(SRC daemons.cpp daemons.h)
 
 set(SFML_DIR "../SFML/lib/cmake/SFML")
 
@@ -13,5 +13,5 @@ include_directories(../SFML/include)
 
 add_library(
         ${PROJECT_NAME}
-        ${GLOB_TYPES}
+        ${SRC}
 )

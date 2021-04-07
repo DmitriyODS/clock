@@ -3,9 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <map>
 
 using sf::Color;
 using sf::Uint32;
+using std::map;
 
 using std::vector;
 
@@ -14,6 +16,13 @@ using ClockTime = time_t;
 
 //// тип id
 using ID = unsigned int;
+
+//// Id activity
+enum class IDActivity {
+    LOADING,
+    MAIN,
+    ALARM_CLOCK_SIGNAL
+};
 
 /*
  * Храним главные цвета приложения

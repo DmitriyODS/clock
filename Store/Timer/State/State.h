@@ -9,6 +9,7 @@
 struct TimerState {
     ClockTime end_time{};
     bool enabled{};
+    bool run_timer_state_daemon{};
 };
 
 #endif //TIMER_STATE_H

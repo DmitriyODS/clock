@@ -19,4 +19,10 @@ Action stopTimer();
 //// возврщает событие сброса таймера
 Action clearTimer();
 
+//// возвращает событие запуска демона таймера
+Action runTimerDaemon();
+
+//// возвращает событие остановки демона таймера
+Action stopTimerDaemon();
+
 #endif //TIMER_ACTIONS_H

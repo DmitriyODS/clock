@@ -19,6 +19,14 @@ TimerState timerReducer(TimerState state, Action action) {
             state.end_time = ClockTime{};
             return state;
         }
+        case ActionTypes::RUN_TIMER_DAEMON: {
+            state.run_timer_state_daemon = true;
+            return state;
+        }
+        case ActionTypes::STOP_TIMER_DAEMON: {
+            state.run_timer_state_daemon = false;
+            return state;
+        }
         default: {
             return state;
         }

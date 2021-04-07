@@ -16,4 +16,10 @@ Action stopStopwatch();
 //// возврщает событие очистки секундомера
 Action clearStopwatch();
 
+//// возвращает событие запуска демона секундомера
+Action runStopwatchDaemon();
+
+//// возвращает событие остановки демона секундомера
+Action stopStopwatchDaemon();
+
 #endif //STOPWATCH_ACTIONS_H

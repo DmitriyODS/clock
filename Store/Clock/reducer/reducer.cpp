@@ -26,6 +26,14 @@ ClockState clockReducer(ClockState state, Action action) {
             state.current_time = *static_cast<ClockTime *>(action.data);
             return state;
         }
+        case ActionTypes::RUN_CLOCK_TIME_DAEMON: {
+            state.run_clock_time_daemon = true;
+            return state;
+        }
+        case ActionTypes::STOP_CLOCK_TIME_DAEMON: {
+            state.run_clock_time_daemon = false;
+            return state;
+        }
         default: {
             return state;
         }

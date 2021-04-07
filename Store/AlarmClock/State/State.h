@@ -8,6 +8,7 @@
  */
 struct AlarmClockState {
     AlarmClocks alarm_clocks{};
+    bool run_alarm_clock_daemon{};
 };
 
 #endif //ALARM_CLOCK_STATE_H

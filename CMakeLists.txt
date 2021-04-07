@@ -7,6 +7,18 @@ include_directories(Store)
 
 include_directories(global)
 
+include_directories(App)
+
+include_directories(Activity)
+
+include_directories(daemons)
+
+add_subdirectory(daemons)
+
+add_subdirectory(Activity)
+
+add_subdirectory(App)
+
 add_subdirectory(global)
 
 add_subdirectory(Store)
@@ -23,4 +35,16 @@ find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED
 
 add_executable(${PROJECT_NAME} main.cpp ${SRC})
 
-target_link_libraries(${PROJECT_NAME} Store global sfml-graphics)
+target_link_libraries(
+        ${PROJECT_NAME}
+        Store
+        global
+        App
+        Activity
+        sfml-graphics
+        sfml-window
+        sfml-system
+        sfml-audio
+        sfml-network
+        daemons
+)

@@ -20,3 +20,17 @@ Action clearStopwatch() {
             ReducerTypes::STOPWATCH
     };
 }
+
+Action runStopwatchDaemon() {
+    return Action{
+            ActionTypes::RUN_STOPWATCH_DAEMON,
+            ReducerTypes::STOPWATCH
+    };
+}
+
+Action stopStopwatchDaemon() {
+    return Action{
+            ActionTypes::STOP_STOPWATCH_DAEMON,
+            ReducerTypes::STOPWATCH
+    };
+}

@@ -15,6 +15,14 @@ StopwatchState stopwatchReducer(StopwatchState state, Action action) {
             state.current_time = ClockTime{};
             return state;
         }
+        case ActionTypes::RUN_STOPWATCH_DAEMON: {
+            state.run_stopwatch_daemon = true;
+            return state;
+        }
+        case ActionTypes::STOP_STOPWATCH_DAEMON: {
+            state.run_stopwatch_daemon = false;
+            return state;
+        }
         default: {
             return state;
         }

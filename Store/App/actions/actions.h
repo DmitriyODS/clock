@@ -31,4 +31,22 @@ Action setAppName(string *app_name);
 //// возвращает событие переключателя тёмной темы
 Action darkMode(bool *is_dark);
 
+//// возвращает событие открытия новой активности
+Action setIntentOpenActivity(IDActivity *idActivity);
+
+//// возвращает событие очистка открытия новой активности
+Action clearIntentOpenActivity();
+
+//// возвращает событие установка данных
+Action setIntentData(void *data);
+
+//// возвращает событие очистки данных
+Action clearIntentData();
+
+//// возвращает событие выставить флаг помещения в стек
+Action pushStackActivity();
+
+//// возвращает событие снять флаг помещения в стек
+Action clearPushStackActivity();
+
 #endif //APP_ACTIONS_H

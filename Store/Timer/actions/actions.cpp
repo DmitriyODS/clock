@@ -28,3 +28,17 @@ Action clearTimer() {
             ReducerTypes::TIMER
     };
 }
+
+Action runTimerDaemon() {
+    return Action{
+            ActionTypes::RUN_TIMER_DAEMON,
+            ReducerTypes::TIMER
+    };
+}
+
+Action stopTimerDaemon() {
+    return Action{
+            ActionTypes::STOP_TIMER_DAEMON,
+            ReducerTypes::TIMER
+    };
+}

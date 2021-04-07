@@ -23,3 +23,17 @@ Action deleteAlarmClockById(AlarmClock *alarm_clock) {
             alarm_clock
     };
 }
+
+Action runAlarmClockDaemon() {
+    return Action{
+            ActionTypes::RUN_ALARM_CLOCK_DAEMON,
+            ReducerTypes::ALARM_CLOCK
+    };
+}
+
+Action stopAlarmClockDaemon() {
+    return Action{
+            ActionTypes::STOP_ALARM_CLOCK_DAEMON,
+            ReducerTypes::ALARM_CLOCK
+    };
+}

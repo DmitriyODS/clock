@@ -9,6 +9,7 @@
 struct ClockState {
     ColorClock color_clock{};
     ClockTime current_time{};
+    bool run_clock_time_daemon{};
 };
 
 #endif //CLOCK_TIME_STATE_H

@@ -19,6 +19,14 @@ AlarmClockState alarmClockReducer(AlarmClockState state, Action action) {
             state.alarm_clocks.erase(state.alarm_clocks.begin() + alarmClock->position);
             return state;
         }
+        case ActionTypes::RUN_ALARM_CLOCK_DAEMON: {
+            state.run_alarm_clock_daemon = true;
+            return state;
+        }
+        case ActionTypes::STOP_ALARM_CLOCK_DAEMON: {
+            state.run_alarm_clock_daemon = false;
+            return state;
+        }
         default: {
             return state;
         }

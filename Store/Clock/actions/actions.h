@@ -22,4 +22,13 @@ Action setColorClockBackground(Color *color);
 //// возвращает событие изменения цвета фона текста на часах
 Action setColorClockText(Color *color);
 
+//// возвращает событие изменения времени
+Action setCurrentTime(ClockTime *clock_time);
+
+//// возвращает событие запуска демона времени
+Action runClockTimeDaemon();
+
+//// возвращает событие остановки демона времени
+Action stopClockTimeDaemon();
+
 #endif //CLOCK_ACTIONS_H

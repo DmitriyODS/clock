@@ -39,3 +39,25 @@ Action setColorClockText(Color *color) {
             color
     };
 }
+
+Action setCurrentTime(ClockTime *clock_time) {
+    return Action{
+            ActionTypes::SET_CLOCK_TIME,
+            ReducerTypes::CLOCK,
+            clock_time
+    };
+}
+
+Action runClockTimeDaemon() {
+    return Action{
+            ActionTypes::RUN_CLOCK_TIME_DAEMON,
+            ReducerTypes::CLOCK
+    };
+}
+
+Action stopClockTimeDaemon() {
+    return Action{
+            ActionTypes::STOP_CLOCK_TIME_DAEMON,
+            ReducerTypes::CLOCK
+    };
+}
