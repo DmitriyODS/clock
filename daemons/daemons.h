@@ -27,11 +27,10 @@ void timerDaemon();
 //// демон засекает время
 void stopwatchDaemon();
 
-
 //// тип функции отложенного вызова
 using PostponeFunction = std::function<void()>;
 
 //// демон отложенного события
-void postponeEventDaemon(float duration, const PostponeFunction& callback);
+void postponeEventDaemon(float duration, PostponeFunction callback);
 
 #endif //CLOCK_DAEMONS_H

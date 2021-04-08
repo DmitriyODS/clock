@@ -56,46 +56,25 @@ Action darkMode(bool *is_dark) {
     };
 }
 
-Action setIntentOpenActivity(void *activity) {
+Action setIntent(void *intent) {
     return Action{
-            ActionTypes::SET_INTENT_OPEN_ACTIVITY,
+            ActionTypes::SET_INTENT,
             ReducerTypes::APP,
-            activity
+            intent
     };
 }
 
 Action clearIntentOpenActivity() {
     return Action{
-            ActionTypes::CLEAR_INTENT_OPEN_ACTIVITY,
+            ActionTypes::CLEAR_INTENT,
             ReducerTypes::APP
     };
 }
 
-Action setIntentData(void *data) {
+Action setSelectComponent(void *component) {
     return Action{
-            ActionTypes::SET_INTENT_DATA,
+            ActionTypes::SET_SELECT_COMPONENT,
             ReducerTypes::APP,
-            data
-    };
-}
-
-Action clearIntentData() {
-    return Action{
-            ActionTypes::CLEAR_INTENT_DATA,
-            ReducerTypes::APP,
-    };
-}
-
-Action pushStackActivity() {
-    return Action{
-            ActionTypes::PUSH_CURRENT_ACTIVITY_STACK,
-            ReducerTypes::APP
-    };
-}
-
-Action clearPushStackActivity() {
-    return Action{
-            ActionTypes::CLEAR_PUSH_ACTIVITY_FLAG,
-            ReducerTypes::APP
+            component
     };
 }

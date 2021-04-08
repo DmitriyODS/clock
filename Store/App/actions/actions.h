@@ -32,21 +32,12 @@ Action setAppName(string *app_name);
 Action darkMode(bool *is_dark);
 
 //// возвращает событие открытия новой активности
-Action setIntentOpenActivity(void *activity);
+Action setIntent(void *intent);
 
 //// возвращает событие очистка открытия новой активности
 Action clearIntentOpenActivity();
 
-//// возвращает событие установка данных
-Action setIntentData(void *data);
-
-//// возвращает событие очистки данных
-Action clearIntentData();
-
-//// возвращает событие выставить флаг помещения в стек
-Action pushStackActivity();
-
-//// возвращает событие снять флаг помещения в стек
-Action clearPushStackActivity();
+//// устанавливает выбранный компонент
+Action setSelectComponent(void *component);
 
 #endif //APP_ACTIONS_H

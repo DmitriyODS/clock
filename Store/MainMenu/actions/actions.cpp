@@ -1,9 +1,9 @@
 #include "actions.h"
 
-Action selectItemMenu(ItemMenuId *item_menu_id) {
+Action selectItemMenu(void *intent_item) {
     return Action{
             ActionTypes::SELECT_ITEM_MENU,
             ReducerTypes::MAIN_MENU,
-            item_menu_id
+            intent_item
     };
 }

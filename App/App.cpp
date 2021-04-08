@@ -1,14 +1,12 @@
 #include "App.h"
 
 void App::_init() {
-    // создание объектов активностей
-    m_map_activity = new MapActivity{
-            {IDActivity::MAIN,               MainActivity::createActivity()},
-            {IDActivity::LOADING,            LoadingActivity::createActivity()},
-            {IDActivity::ALARM_CLOCK_SIGNAL, AlarmClockActivity::createActivity()}
-    };
+    Color color = Color::White;
+    m_store->dispatch(setColorBackground(&color));
 
-    m_current_activity = static_cast<BaseActivity *>(m_map_activity->at(IDActivity::LOADING));
+    m_opening = Activity::LOADING;
+
+    _createNewActivity();
 }
 
 App::App()
@@ -36,7 +34,13 @@ int App::start() {
     m_is_running = true;
 
     while (m_is_running) {
-        m_current_activity->start(m_map_activity);
+        if (m_current_activity) {
+            m_current_activity->start();
+        } else {
+            std::cerr << "The current screen is not set!" << std::endl;
+            m_is_running = false;
+            continue;
+        }
 
         _activityTransaction();
     }
@@ -55,7 +59,7 @@ bool App::_pushStackCurrentScreen() {
     // то добавляем указатель на него
     // в стэк
     if (m_current_activity) {
-        m_stack_activity.push(m_current_activity);
+        m_stack_activity.push(m_current_activity->getId());
         return true;
     }
 
@@ -70,58 +74,71 @@ bool App::_pullStackCurrentScreen() {
         return false;
     }
 
-    // возвращаем указатель на последний экран
-    m_current_activity = m_stack_activity.top();
+    // устанавливаем id нового экрана
+    m_opening = m_stack_activity.top();
 
     // удаляем его из стэка
     m_stack_activity.pop();
+
+    // создаём новый экран
+    _createNewActivity();
 
     return true;
 }
 
 void App::_activityTransaction() {
-    // проверяем, нужно ли запускать другой экран
-    if (m_store->getState().app_state.intent_open_activity) {
-        // если нужно, чекаем, слеудет ли сохранять текущий экран
-        // в стэк
-        if (m_store->getState().app_state.intent_push_activity) {
-            // если да, то сохраняем текущий экран в стеке
-            _pushStackCurrentScreen();
+    // достаём intent, елси он есть
+    Intent *intent = static_cast<Intent *>(m_store->getState().app_state.intent);
 
-            // теперь обнуляем состояние помещения в стек
-            // отправляем наше действие в диспач
-            // данные оставляем пустыми
-            // метод диспач у объекта store
-            // принимает объект Action
-            // этот объект содержит два поля: тип события
-            // и данные
-            // в данном случае, мы заполняем только тип
-            // события, т к данные в нашем контексте не играют роли
-            m_store->dispatch(clearPushStackActivity());
+    // проверяем, есть ли он
+    if (intent) {
+        // если есть intent, значит нужно создать новый объект
+        // сперва смотрим, нужно ли отправлять в стек текущий экран
+        if (intent->push_stack) {
+            // если нужно, делаем это
+            _pushStackCurrentScreen();
         }
 
-        // теперь нужно запустить новый экран, помещаем его в текущий
-        // для этого мы берём у хранилища указатель на следующий экран
-        // который был помещён туда предыдущим экраном
-        // преобразовываем неопределённый указатель void
-        // в указатель на новый экран
-        // и кладём в текущий
-        m_current_activity = static_cast<BaseActivity *>(m_store->getState().app_state.intent_open_activity);
+        // запускаем новый экран
+        // удаляем старый
+        delete m_current_activity;
 
-        // обнуляем указатель на следующий экран
-        // отправляем действие в диспач
-        // данные не заполняем
+        // кладём id нового экрана
+        m_opening = intent->id_activity;
+
+        // создаём новый экран
+        _createNewActivity();
+
+        // удаляем intent
+        delete intent;
+
+        // обнуляем state
         m_store->dispatch(clearIntentOpenActivity());
     } else {
-        // если не нужно запускать другой экран
-        // пытаемся получить прошлый экран из стэка
+        // если не нужно открывать, пытаемся достать что - то из стека
         if (bool err = _pullStackCurrentScreen(); !err) {
             // если стэк пуст, значит закрылся последний экран программы
             // придётся её закрыть
             m_is_running = false;
         }
+    }
+}
 
-        // если получили прошлый экран и заменили им текущий
-        // значит всё хорошо
+void App::_createNewActivity() {
+    // TODO: добавляем сюда записи о новых экранах
+
+    switch (m_opening) {
+        case Activity::MAIN: {
+            m_current_activity = new MainActivity();
+            break;
+        }
+        case Activity::LOADING: {
+            m_current_activity = new LoadingActivity();
+            break;
+        }
+        case Activity::ALARM_CLOCK: {
+            m_current_activity = new AlarmClockActivity();
+            break;
+        }
     }
 }

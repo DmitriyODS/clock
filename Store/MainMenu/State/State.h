@@ -7,7 +7,7 @@
  * Описываем все состояния нашего объекта main menu
  */
 struct MainMenuState {
-    ItemMenuId current_item{};
+    void *intent_item{};
 };
 
 #endif //MAIN_MENU_STATE_H
