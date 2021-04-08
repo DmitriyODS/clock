@@ -29,6 +29,8 @@ private:
     LoadingActivity();
 
     void _init();
+
+    void _reinit();
 };
 
 

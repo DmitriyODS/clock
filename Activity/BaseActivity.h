@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <daemons.h>
 #include <App/actions/actions.h>
+#include <BaseComponent.h>
 
 using std::string;
 

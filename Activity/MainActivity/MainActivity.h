@@ -19,15 +19,19 @@ public:
 private:
     Store *m_store{};
 
-    bool m_is_running{};
+    bool m_is_runnning{};
 
     RenderWindow *m_window{};
 
     VideoMode m_video_mode{};
 
+    ComponentsList m_components{};
+
     MainActivity();
 
     void _init();
+
+    void _reinit();
 };
 
 

@@ -16,10 +16,20 @@ void LoadingActivity::_init() {
     );
 }
 
+void LoadingActivity::_reinit() {
+    m_window->create(
+            VideoMode(800, 500),
+            "LoadingScreen",
+            StyleWindow::None
+    );
+}
+
 void LoadingActivity::start(MapActivity *map_activity) {
     // если окно не создано, создаём его
     if (!m_window) {
         _init();
+    } else {
+        _reinit();
     }
 
     // запуск демона отложенного события
@@ -40,18 +50,24 @@ void LoadingActivity::start(MapActivity *map_activity) {
     Thread render_thread(&LoadingActivity::render, this);
     render_thread.launch();
 
-    while (m_window->isOpen() && m_is_runnning) {
+    while (m_window->isOpen()) {
 
         Event event{};
 
         while (m_window->pollEvent(event)) {
             switch (event.type) {
                 case Event::Closed: {
-                    m_window->close();
+                    m_is_runnning = false;
                     break;
                 }
             }
         }
+
+        // TODO: подумать, можно ли сделать как - то красиво
+        if (!m_is_runnning) {
+            m_window->close();
+        }
+
     }
 
     m_store->dispatch(setIntentOpenActivity(map_activity->at(IDActivity::MAIN)));
@@ -60,7 +76,7 @@ void LoadingActivity::start(MapActivity *map_activity) {
 void LoadingActivity::render() {
     m_window->setActive(true);
 
-    while (m_window->isOpen() && m_is_runnning) {
+    while (m_is_runnning) {
         m_window->clear(Color::White);
 
         for (auto item : m_components) {
