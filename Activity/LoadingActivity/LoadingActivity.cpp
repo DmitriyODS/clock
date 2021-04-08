@@ -30,6 +30,13 @@ void LoadingActivity::start(MapActivity *map_activity) {
     );
     postpone_event_daemon.launch();
 
+    // пробуем запустить отрисовку в отдельном потоке
+    // для оптимизации производительности
+    m_window->setActive(false);
+
+    Thread render_thread(&LoadingActivity::render, this);
+    render_thread.launch();
+
     while (m_window->isOpen() && m_is_runnning) {
 
         Event event{};
@@ -42,10 +49,6 @@ void LoadingActivity::start(MapActivity *map_activity) {
                 }
             }
         }
-
-        render();
-
-        m_window->display();
     }
 
     m_store->dispatch(setIntentOpenActivity(map_activity->at(IDActivity::MAIN)));
@@ -55,10 +58,16 @@ void LoadingActivity::start(MapActivity *map_activity) {
 }
 
 void LoadingActivity::render() {
-    m_window->clear(Color::White);
+    m_window->setActive(true);
 
-    for (auto item : m_components) {
-        item->render(m_window);
+    while (m_window->isOpen() && m_is_runnning) {
+        m_window->clear(Color::White);
+
+        for (auto item : m_components) {
+            item->render(m_window);
+        }
+
+        m_window->display();
     }
 }
 
