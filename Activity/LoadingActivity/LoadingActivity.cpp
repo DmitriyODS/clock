@@ -7,3 +7,13 @@ LoadingActivity::LoadingActivity()
         VideoMode(800, 500),
         StyleWindow::None
 ) {}
+
+void LoadingActivity::start() {
+    Thread postpone_thread(postponeEventDaemon, 3, [this]() {
+        this->m_is_running = false;
+    });
+
+    postpone_thread.launch();
+
+    BaseActivity::start();
+}

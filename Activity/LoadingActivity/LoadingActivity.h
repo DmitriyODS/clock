@@ -12,6 +12,9 @@ public:
     LoadingActivity(const LoadingActivity &) = delete;
 
     LoadingActivity &operator=(const LoadingActivity &) = delete;
+
+protected:
+    void start() override;
 };
 
 

@@ -68,7 +68,7 @@ void stopwatchDaemon() {
     GlobalMutex.unlock();
 }
 
-void postponeEventDaemon(float duration, const PostponeFunction &callback) {
+void postponeEventDaemon(float duration, PostponeFunction callback) {
     GlobalMutex.lock();
     std::clog << "Postpone event daemon start" << std::endl;
     GlobalMutex.unlock();
