@@ -10,6 +10,8 @@ public:
     LoadingScreen(const LoadingScreen &) = delete;
 
     LoadingScreen &operator=(const LoadingScreen &) = delete;
+
+    void init() override;
 };
 
 

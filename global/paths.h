@@ -3,6 +3,6 @@
 
 const char *PATH_CLOCK_LOAD = R"(C:\Users\osipo\projects\clock\src\img\icons\clock.png)";
 
-const char *PATH_BACKGROUND_LOADING_SCREEN = R"(C:\Users\osipo\projects\clock\src\img\screens\load_screen.png)";
+const char *PATH_BACKGROUND_LOADING_SCREEN = R"(C:\Users\osipo\projects\clock\src\img\screens\load_screen_v1.png)";
 
 #endif //CLOCK_PATHS_H

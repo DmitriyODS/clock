@@ -13,8 +13,12 @@ public:
 
     LoadingActivity &operator=(const LoadingActivity &) = delete;
 
-protected:
     void start() override;
+
+    void _createIntent() override;
+
+    void _initComponents() override;
+
 };
 
 

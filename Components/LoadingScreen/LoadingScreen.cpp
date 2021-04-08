@@ -25,3 +25,9 @@
 //}
 //
 //LoadingScreen::LoadingScreen() : LoadingScreen(Vector2i{}) {}
+void LoadingScreen::init() {
+    BaseComponent::init();
+
+    m_background_texture.loadFromFile(PATH_BACKGROUND_LOADING_SCREEN);
+    m_background_sprite.setTexture(m_background_texture);
+}

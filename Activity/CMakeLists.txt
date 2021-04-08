@@ -41,6 +41,8 @@ include_directories(../SFML/include)
 
 include_directories(../Components)
 
+include_directories(../Store)
+
 add_library(
         ${PROJECT_NAME}
         ${LOADING_ACTIVITY}
@@ -49,4 +51,4 @@ add_library(
         ${ALARM_CLOCK_ACTIVITY}
 )
 
-target_link_libraries(${PROJECT_NAME} Components)
+target_link_libraries(${PROJECT_NAME} Store Components)

@@ -56,7 +56,7 @@ Action darkMode(bool *is_dark) {
     };
 }
 
-Action setIntentOpenActivity(void *intent) {
+Action setIntent(void *intent) {
     return Action{
             ActionTypes::SET_INTENT,
             ReducerTypes::APP,
