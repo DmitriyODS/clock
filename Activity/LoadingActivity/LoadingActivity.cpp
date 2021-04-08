@@ -17,7 +17,10 @@ void LoadingActivity::_init() {
 }
 
 void LoadingActivity::start(MapActivity *map_activity) {
-    _init();
+    // если окно не создано, создаём его
+    if (!m_window) {
+        _init();
+    }
 
     // запуск демона отложенного события
     // он закроет окно после 5 секунд
@@ -52,9 +55,6 @@ void LoadingActivity::start(MapActivity *map_activity) {
     }
 
     m_store->dispatch(setIntentOpenActivity(map_activity->at(IDActivity::MAIN)));
-
-    delete m_window;
-    m_window = nullptr;
 }
 
 void LoadingActivity::render() {
@@ -72,7 +72,8 @@ void LoadingActivity::render() {
 }
 
 LoadingActivity::LoadingActivity()
-        : m_store(Store::getStore()) {}
+        : m_store(Store::getStore()) {
+}
 
 LoadingActivity *LoadingActivity::createActivity() {
     static auto *loadingActivity = new LoadingActivity();

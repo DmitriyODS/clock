@@ -19,6 +19,12 @@ public:
 private:
     Store *m_store{};
 
+    bool m_is_running{};
+
+    RenderWindow *m_window{};
+
+    VideoMode m_video_mode{};
+
     MainActivity();
 
     void _init();
