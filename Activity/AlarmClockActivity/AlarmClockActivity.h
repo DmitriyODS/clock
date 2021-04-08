@@ -6,22 +6,11 @@
 
 class AlarmClockActivity : public BaseActivity {
 public:
+    AlarmClockActivity();
+
     AlarmClockActivity(const AlarmClockActivity &) = delete;
 
     AlarmClockActivity &operator=(const AlarmClockActivity &) = delete;
-
-    static AlarmClockActivity *createActivity();
-
-    void start(MapActivity *map_activity) override;
-
-    void render() override;
-
-private:
-    Store *m_store{};
-
-    AlarmClockActivity();
-
-    void _init();
 };
 
 

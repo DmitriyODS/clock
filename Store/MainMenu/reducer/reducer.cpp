@@ -3,7 +3,7 @@
 MainMenuState mainMenuReducer(MainMenuState state, Action action) {
     switch (action.type) {
         case ActionTypes::SELECT_ITEM_MENU: {
-            state.current_item = *static_cast<ItemMenuId *>(action.data);
+            state.intent_item = action.data;
             return state;
         }
         default: {

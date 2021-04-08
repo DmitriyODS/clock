@@ -30,28 +30,16 @@ AppState appReducer(AppState state, Action action) {
             state.dark_mode = *static_cast<bool *>(action.data);
             return state;
         }
-        case ActionTypes::SET_INTENT_OPEN_ACTIVITY: {
-            state.intent_open_activity = action.data;
+        case ActionTypes::SET_INTENT: {
+            state.intent = action.data;
             return state;
         }
-        case ActionTypes::CLEAR_INTENT_OPEN_ACTIVITY: {
-            state.intent_open_activity = nullptr;
+        case ActionTypes::CLEAR_INTENT: {
+            state.intent = nullptr;
             return state;
         }
-        case ActionTypes::SET_INTENT_DATA: {
-            state.intent_data = action.data;
-            return state;
-        }
-        case ActionTypes::CLEAR_INTENT_DATA: {
-            state.intent_data = nullptr;
-            return state;
-        }
-        case ActionTypes::PUSH_CURRENT_ACTIVITY_STACK: {
-            state.intent_push_activity = true;
-            return state;
-        }
-        case ActionTypes::CLEAR_PUSH_ACTIVITY_FLAG: {
-            state.intent_push_activity = false;
+        case ActionTypes::SET_SELECT_COMPONENT: {
+            state.select_component = action.data;
             return state;
         }
         default: {

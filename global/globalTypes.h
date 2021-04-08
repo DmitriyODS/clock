@@ -18,13 +18,6 @@ using ClockTime = std::time_t;
 //// тип id
 using ID = unsigned int;
 
-//// Id activity
-enum IDActivity : int {
-    LOADING,
-    MAIN,
-    ALARM_CLOCK_SIGNAL
-};
-
 /*
  * Храним главные цвета приложения
  */
@@ -69,13 +62,5 @@ struct AlarmClock {
 //// Лист будильников
 using AlarmClocks = vector<AlarmClock *>;
 
-//// Id пунктов главного меню
-enum class ItemMenuId {
-    CLOCK,
-    ALARM_CLOCK,
-    STOPWATCH,
-    TIMER,
-    SETTINGS
-};
 
 #endif //CLOCK_GLOBALTYPES_H

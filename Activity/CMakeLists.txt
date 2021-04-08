@@ -8,6 +8,8 @@ set(
 
         BaseActivity.cpp
         BaseActivity.h
+
+        activity.h
 )
 
 set(

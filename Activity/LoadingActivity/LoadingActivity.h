@@ -7,30 +7,11 @@
 
 class LoadingActivity : public BaseActivity {
 public:
+    LoadingActivity();
+
     LoadingActivity(const LoadingActivity &) = delete;
 
     LoadingActivity &operator=(const LoadingActivity &) = delete;
-
-    static LoadingActivity *createActivity();
-
-    void start(MapActivity *map_activity) override;
-
-    void render() override;
-
-private:
-    Store *m_store{};
-
-    RenderWindow *m_window{};
-
-    ComponentsList m_components{};
-
-    bool m_is_runnning{};
-
-    LoadingActivity();
-
-    void _init();
-
-    void _reinit();
 };
 
 

@@ -15,7 +15,7 @@
 #include <App/actions/actions.h>
 
 
-using StackActivity = std::stack<BaseActivity *>;
+using StackActivity = std::stack<Activity>;
 
 using sf::Thread;
 
@@ -35,11 +35,11 @@ public:
 private:
     Store *m_store{};
 
-    MapActivity *m_map_activity{};
-
     BaseActivity *m_current_activity{};
 
     StackActivity m_stack_activity{};
+
+    Activity m_opening{};
 
     bool m_is_running{};
 
@@ -48,6 +48,8 @@ private:
     void _init();
 
     void _activityTransaction();
+
+    void _createNewActivity();
 
     bool _pushStackCurrentScreen();
 

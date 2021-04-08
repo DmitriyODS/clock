@@ -5,24 +5,11 @@
 
 class LoadingScreen : public BaseComponent {
 public:
-    LoadingScreen();
+    LoadingScreen() = default;
 
-    explicit LoadingScreen(Vector2i position);
+    LoadingScreen(const LoadingScreen &) = delete;
 
-    void render(RenderWindow *parent) override;
-
-private:
-    Vector2i m_position{};
-
-    Sprite m_background{};
-
-    Texture m_texture_background{};
-
-    Sprite m_clock_load{};
-
-    Texture m_texture_clock_load{};
-
-    void _init();
+    LoadingScreen &operator=(const LoadingScreen &) = delete;
 };
 
 
