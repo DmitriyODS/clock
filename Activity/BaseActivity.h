@@ -41,7 +41,9 @@ public:
 
     virtual void selectComponent(Event::MouseMoveEvent mouse_move);
 
-    virtual void clickComponent(Mouse::Button button);
+    virtual void pressedComponent(Event::MouseButtonEvent pressed_mouse);
+
+    virtual void releasedComponent(Event::MouseButtonEvent released_mouse);
 
     virtual Activity getId();
 

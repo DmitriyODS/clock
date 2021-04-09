@@ -74,7 +74,11 @@ void BaseActivity::start() {
                     break;
                 }
                 case Event::MouseButtonPressed: {
-                    clickComponent(event.mouseButton.button);
+                    pressedComponent(event.mouseButton);
+                    break;
+                }
+                case Event::MouseButtonReleased: {
+                    releasedComponent(event.mouseButton);
                     break;
                 }
             }
@@ -116,22 +120,42 @@ BaseActivity::~BaseActivity() {
 }
 
 void BaseActivity::selectComponent(Event::MouseMoveEvent mouse_move) {
-    BaseComponent *cmpnt{};
+    BaseComponent *cmpnt, *save{};
 
     for (auto &item : m_components) {
-        cmpnt = item->select(mouse_move);
+        cmpnt = item->mouseCollision(mouse_move);
 
-        if (cmpnt) break;
+        if (cmpnt) {
+            save = cmpnt;
+        }
     }
 
-    m_store->dispatch(setSelectComponent(cmpnt));
+    m_store->dispatch(setSelectComponent(save));
 }
 
-void BaseActivity::clickComponent(Mouse::Button button) {
+void BaseActivity::pressedComponent(Event::MouseButtonEvent pressed_mouse) {
+    // проверяем ещё разочек, не ушли ли с кнопки
+    selectComponent(Event::MouseMoveEvent{pressed_mouse.x, pressed_mouse.y});
+
+    // получаем текущий выделенный компонент
     BaseComponent *component = static_cast<BaseComponent *>(m_store->getState().app_state.select_component);
 
+    // если успешно получили, отдаём приказ о селекте
     if (component) {
-        component->click();
+        component->mousePressed(pressed_mouse);
+    }
+}
+
+void BaseActivity::releasedComponent(Event::MouseButtonEvent released_mouse) {
+    // проверяем ещё разочек, не ушли ли с кнопки
+    selectComponent(Event::MouseMoveEvent{released_mouse.x, released_mouse.y});
+
+    // получаем текущий выделенный компонент
+    BaseComponent *component = static_cast<BaseComponent *>(m_store->getState().app_state.select_component);
+
+    // если успешно получили, отдаём приказ об отпускании кнопки
+    if (component) {
+        component->mouseReleased(released_mouse);
     }
 }
 

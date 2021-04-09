@@ -12,12 +12,19 @@ void BaseComponent::render(RenderWindow *window) {
     window->draw(m_background_sprite);
 }
 
-BaseComponent *BaseComponent::select(Event::MouseMoveEvent mouse_move) {
-    // TODO: переопределить в производных классах
+BaseComponent *BaseComponent::mouseCollision(Event::MouseMoveEvent mouse_move) {
+    if (m_state_component == StateComponent::DISABLED) return nullptr;
 
-    bool is_select = m_background_sprite.getGlobalBounds().contains(mouse_move.x, mouse_move.y);
+    bool is_select = checkCollision(mouse_move);
 
-    return is_select ? this : nullptr;
+    if (is_select) {
+        m_state_component = StateComponent::FOCUS;
+        return this;
+    }
+
+    m_state_component = StateComponent::DEFAULT;
+
+    return nullptr;
 }
 
 void BaseComponent::click() {
@@ -38,8 +45,8 @@ void BaseComponent::setPosition(Vector2f position) {
     m_position = position;
 }
 
-Vector2i BaseComponent::getPosition() {
-    return sf::Vector2i();
+Vector2f BaseComponent::getPosition() {
+    return m_position;
 }
 
 void BaseComponent::setClickListener(Callback click_listener) {
@@ -48,12 +55,6 @@ void BaseComponent::setClickListener(Callback click_listener) {
 
 ID BaseComponent::getId() {
     return m_id;
-}
-
-BaseComponent::BaseComponent() {
-    m_id = s_generate_id++;
-
-    m_store = Store::getStore();
 }
 
 bool BaseComponent::checkVisible() {
@@ -68,4 +69,54 @@ Items BaseComponent::getMIdItem() const {
 
 void BaseComponent::setMIdItem(Items mIdItem) {
     m_id_item = mIdItem;
+}
+
+void BaseComponent::updateStyle() {
+    m_color_app = m_store->getState().app_state.color_app;
+}
+
+BaseComponent::BaseComponent(Vector2f position, Vector2f size)
+        : m_position(position), m_size(size) {
+    m_id = s_generate_id++;
+
+    m_store = Store::getStore();
+}
+
+void BaseComponent::mouseReleased(Event::MouseButtonEvent mouse_pressed) {
+    if (m_state_component == StateComponent::DISABLED) return;
+
+    if (m_state_component == StateComponent::SELECTED) {
+        m_state_component = StateComponent::DEFAULT;
+        click();
+    }
+}
+
+void BaseComponent::mousePressed(Event::MouseButtonEvent mouse_pressed) {
+    if (m_state_component == StateComponent::DISABLED) return;
+
+    if (m_state_component == StateComponent::FOCUS) {
+        m_state_component = StateComponent::SELECTED;
+    }
+}
+
+void BaseComponent::setDisabled(bool value) {
+    m_state_component = value ? StateComponent::DISABLED : StateComponent::DEFAULT;
+}
+
+bool BaseComponent::isEnabled() {
+    return m_state_component != StateComponent::DISABLED;
+}
+
+const Vector2f &BaseComponent::getMSize() const {
+    return m_size;
+}
+
+void BaseComponent::setMSize(const Vector2f &mSize) {
+    m_size = mSize;
+}
+
+bool BaseComponent::checkCollision(Event::MouseMoveEvent mouse_move) {
+    // TODO: переопределить в производных классах
+
+    return m_background_sprite.getGlobalBounds().contains(mouse_move.x, mouse_move.y);
 }

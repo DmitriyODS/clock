@@ -31,8 +31,7 @@ void LoadingActivity::_createIntent() {
 void LoadingActivity::_initComponents() {
     BaseActivity::_initComponents();
 
-    auto *loadingScreen = new LoadingScreen();
-    loadingScreen->init();
+    auto *loadingScreen = new LoadingScreen(Vector2f(), Vector2f());
 
     m_components.push_back(
             loadingScreen

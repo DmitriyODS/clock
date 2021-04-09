@@ -34,6 +34,7 @@ enum class ActionTypes {
     CLEAR_INTENT,
     SET_SELECT_COMPONENT,
     SET_EXIT,
+    SET_COLOR_APP,
 
     //// Clock
     SET_COLOR_ARROW_HOUR,

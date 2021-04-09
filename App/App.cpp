@@ -1,8 +1,17 @@
 #include "App.h"
 
 void App::_init() {
-    auto color = Color(247, 247, 247);
-    m_store->dispatch(setColorBackground(&color));
+    ColorApp colorApp{
+            Color(236, 239, 241),
+            Color::White,
+            Color(96, 125, 139),
+            Color(33, 150, 243),
+            Color(233, 30, 99),
+            Color(100, 181, 246),
+            Color(158, 158, 158)
+    };
+
+    m_store->dispatch(setColorApp(&colorApp));
 
     m_opening = Activity::LOADING;
 

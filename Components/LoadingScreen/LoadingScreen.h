@@ -5,13 +5,11 @@
 
 class LoadingScreen : public BaseComponent {
 public:
-    LoadingScreen() = default;
+    LoadingScreen(Vector2f position, Vector2f size);
 
     LoadingScreen(const LoadingScreen &) = delete;
 
     LoadingScreen &operator=(const LoadingScreen &) = delete;
-
-    void init() override;
 };
 
 

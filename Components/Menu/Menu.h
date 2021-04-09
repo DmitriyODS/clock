@@ -8,19 +8,19 @@
 
 class Menu : public BaseComponent {
 public:
-    Menu() = default;
+    Menu(Vector2f position, Vector2f size);
 
     Menu(const Menu &) = delete;
 
     Menu &operator=(const Menu &) = delete;
 
-    void init() override;
-
     vector<Button*> m_buttons{};
 
     void render(RenderWindow *window) override;
 
-    BaseComponent * select(Event::MouseMoveEvent mouse_move) override;
+    void clickListener(void *component);
+
+    BaseComponent * mouseCollision(Event::MouseMoveEvent mouse_move) override;
 };
 
 

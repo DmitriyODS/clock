@@ -43,4 +43,7 @@ Action setSelectComponent(void *component);
 //// послать сигнал о завершении работы
 Action setExit();
 
+//// установка глобальной цветовой темы
+Action setColorApp(ColorApp *color_app);
+
 #endif //APP_ACTIONS_H

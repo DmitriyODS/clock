@@ -85,3 +85,11 @@ Action setExit() {
             ReducerTypes::APP
     };
 }
+
+Action setColorApp(ColorApp *color_app) {
+    return Action{
+            ActionTypes::SET_COLOR_APP,
+            ReducerTypes::APP,
+            color_app
+    };
+}

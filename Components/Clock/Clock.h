@@ -9,13 +9,11 @@ using sf::RectangleShape;
 
 class Clock : public BaseComponent {
 public:
-    Clock() = default;
+    Clock(Vector2f position, Vector2f size);
 
     Clock(const Clock &) = delete;
 
     Clock &operator=(const Clock &) = delete;
-
-    void init() override;
 
     void render(RenderWindow *window) override;
 

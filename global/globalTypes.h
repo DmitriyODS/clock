@@ -23,9 +23,12 @@ using ID = unsigned int;
  */
 struct ColorApp {
     Color background{};
+    Color element_background{};
     Color text{};
     Color elements{};
     Color accent{};
+    Color hover{};
+    Color disabled{};
 };
 
 /*

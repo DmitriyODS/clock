@@ -5,16 +5,11 @@
 
 class AlarmClockScreen : public BaseComponent {
 public:
-    AlarmClockScreen() = default;
+    AlarmClockScreen(Vector2f position, Vector2f size);
 
     AlarmClockScreen(const AlarmClockScreen &) = delete;
 
     AlarmClockScreen &operator=(const AlarmClockScreen &) = delete;
-
-    void init() override;
-
-private:
-    Items m_id_item{};
 };
 
 

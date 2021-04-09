@@ -26,19 +26,18 @@ class BaseComponent;
 
 //// состояния компонента
 enum class StateComponent {
-    NONE,
+    DEFAULT,
     FOCUS,
-    CLICK,
     SELECTED,
     DISABLED
 };
 
-using Callback = function<void(BaseComponent *)>;
+using Callback = function<void(void *)>;
 
 
 class BaseComponent {
 public:
-    BaseComponent();
+    BaseComponent(Vector2f position, Vector2f size);
 
     BaseComponent(const BaseComponent &) = delete;
 
@@ -46,7 +45,15 @@ public:
 
     virtual void render(RenderWindow *window);
 
-    virtual BaseComponent *select(Event::MouseMoveEvent mouse_move);
+    virtual BaseComponent *mouseCollision(Event::MouseMoveEvent mouse_move);
+
+    virtual void mousePressed(Event::MouseButtonEvent mouse_pressed);
+
+    virtual void mouseReleased(Event::MouseButtonEvent mouse_pressed);
+
+    virtual void setDisabled(bool value);
+
+    virtual bool isEnabled();
 
     virtual void click();
 
@@ -56,7 +63,7 @@ public:
 
     virtual void setPosition(Vector2f position);
 
-    virtual Vector2i getPosition();
+    virtual Vector2f getPosition();
 
     virtual void setClickListener(Callback click_listener);
 
@@ -70,6 +77,14 @@ public:
 
     virtual void setMIdItem(Items mIdItem);
 
+    virtual void updateStyle();
+
+    virtual const Vector2f &getMSize() const;
+
+    virtual void setMSize(const Vector2f &mSize);
+
+    virtual bool checkCollision(Event::MouseMoveEvent mouse_move);
+
 protected:
     static ID s_generate_id;
 
@@ -79,6 +94,8 @@ protected:
     Sprite m_background_sprite{};
     StateComponent m_state_component{};
     Vector2f m_position{};
+    Vector2f m_size{};
+
     Callback m_click_listener{};
     Store *m_store{};
 

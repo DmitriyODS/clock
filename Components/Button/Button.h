@@ -8,15 +8,13 @@ using sf::RectangleShape;
 
 class Button : public BaseComponent {
 public:
-    Button(string text, Vector2f size, unsigned int size_text);
+    Button(string text, Vector2f position, Vector2f size);
 
     Button(const Button &) = delete;
 
     Button &operator=(const Button &) = delete;
 
-    void init() override;
-
-    void setSize(Vector2f size, unsigned int size_text);
+    void setMSize(const Vector2f &mSize) override;
 
     Vector2f getSize();
 
@@ -24,28 +22,32 @@ public:
 
     void setPosition(Vector2f position) override;
 
-    void setSelect();
+    bool checkCollision(Event::MouseMoveEvent mouse_move) override;
 
-    void setFocus();
+    void calculateText();
 
-    void clearSelect();
+    void updateButton();
 
-    BaseComponent * select(Event::MouseMoveEvent mouse_move) override;
+    bool isMSelected() const;
+
+    void setMSelected(bool mSelected);
+
+    BaseComponent *mouseCollision(Event::MouseMoveEvent mouse_move) override;
+
+    void mouseReleased(Event::MouseButtonEvent mouse_pressed) override;
+
+    void mousePressed(Event::MouseButtonEvent mouse_pressed) override;
 
 private:
-    Vector2f m_size{};
-
     RectangleShape m_react_back{};
+
+    unsigned int m_text_size{};
 
     Font m_font{};
 
     Text m_text{};
 
-    Items m_item_id{};
-public:
-    Items getMItemId() const;
-
-    void setMItemId(Items mItemId);
+    bool m_selected{};
 };
 
 #endif //CLOCK_BUTTON_H

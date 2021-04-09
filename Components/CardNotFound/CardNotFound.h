@@ -5,13 +5,11 @@
 
 class CardNotFound : public BaseComponent {
 public:
-    CardNotFound() = default;
+    CardNotFound(Vector2f position, Vector2f size);
 
     CardNotFound(const CardNotFound &) = delete;
 
     CardNotFound &operator=(const CardNotFound &) = delete;
-
-    void init() override;
 
     void render(RenderWindow *window) override;
 };

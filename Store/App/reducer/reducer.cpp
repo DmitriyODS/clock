@@ -46,6 +46,10 @@ AppState appReducer(AppState state, Action action) {
             state.m_exit = true;
             return state;
         }
+        case ActionTypes::SET_COLOR_APP: {
+            state.color_app = *static_cast<ColorApp *>(action.data);
+            return state;
+        }
         default: {
             return state;
         }
