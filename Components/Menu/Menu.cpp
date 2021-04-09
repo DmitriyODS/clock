@@ -36,7 +36,7 @@ void Menu::init() {
     button->setMItemId(Items::STOPWATCH);
     button->setClickListener([this](BaseComponent *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::STOPWATCH};
+        auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
     button->init();
@@ -48,7 +48,7 @@ void Menu::init() {
     button->setMItemId(Items::TIMER);
     button->setClickListener([this](BaseComponent *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::TIMER};
+        auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
     button->init();
@@ -60,7 +60,7 @@ void Menu::init() {
     button->setMItemId(Items::SETTINGS);
     button->setClickListener([this](BaseComponent *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::SETTINGS};
+        auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
     button->init();

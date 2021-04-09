@@ -21,15 +21,6 @@ public:
 
     void updateClock();
 
-    bool checkVisible();
-
-private:
-    Items m_id_item{};
-public:
-    Items getMIdItem() const;
-
-    void setMIdItem(Items mIdItem);
-
 private:
 
     Texture m_texture_clock{};

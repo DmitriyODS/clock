@@ -55,3 +55,17 @@ BaseComponent::BaseComponent() {
 
     m_store = Store::getStore();
 }
+
+bool BaseComponent::checkVisible() {
+    Items *id_item = static_cast<Items *>(m_store->getState().main_menu_state.intent_item);
+
+    return *id_item == getMIdItem();
+}
+
+Items BaseComponent::getMIdItem() const {
+    return m_id_item;
+}
+
+void BaseComponent::setMIdItem(Items mIdItem) {
+    m_id_item = mIdItem;
+}

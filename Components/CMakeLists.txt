@@ -54,6 +54,13 @@ set(
         Stopwatch/Stopwatch.h
 )
 
+set(
+        CARD_NOT_FOUND
+
+        CardNotFound/CardNotFound.cpp
+        CardNotFound/CardNotFound.h
+)
+
 set(SFML_DIR "../SFML/lib/cmake/SFML")
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED)
@@ -72,6 +79,7 @@ add_library(
         ${TIMER}
         ${STOPWATCH}
         ${ALARM_CLOCK}
+        ${CARD_NOT_FOUND}
 )
 
 target_link_libraries(${PROJECT_NAME} global)

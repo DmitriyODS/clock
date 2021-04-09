@@ -55,17 +55,3 @@ void Clock::updateClock() {
     m_arrow_minutes.setRotation(180 + lambda_min);
     m_arrow_hour.setRotation(180 + lambda_hour);
 }
-
-bool Clock::checkVisible() {
-    Items *id_item = static_cast<Items *>(m_store->getState().main_menu_state.intent_item);
-
-    return *id_item == getMIdItem();
-}
-
-Items Clock::getMIdItem() const {
-    return m_id_item;
-}
-
-void Clock::setMIdItem(Items mIdItem) {
-    m_id_item = mIdItem;
-}

@@ -8,6 +8,7 @@
 #include <Stopwatch/Stopwatch.h>
 #include <Timer/Timer.h>
 #include <MainMenu/actions/actions.h>
+#include <CardNotFound/CardNotFound.h>
 
 
 class MainActivity : public BaseActivity {

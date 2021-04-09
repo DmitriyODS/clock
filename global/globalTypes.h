@@ -68,7 +68,8 @@ enum Items : int {
     ALARM_CLOCK,
     STOPWATCH,
     TIMER,
-    SETTINGS
+    SETTINGS,
+    NOT_FOUND
 };
 
 struct IntentItem {

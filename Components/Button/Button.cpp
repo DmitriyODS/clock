@@ -35,7 +35,7 @@ Button::Button(string text, Vector2f size, unsigned int size_text) {
 void Button::render(RenderWindow *window) {
     IntentItem *intentItem = static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
 
-    if (m_state_component == StateComponent::FOCUES) {
+    if (m_state_component == StateComponent::FOCUS) {
         setFocus();
     }
 
@@ -62,7 +62,7 @@ void Button::clearSelect() {
     m_react_back.setOutlineColor(Color(112, 112, 112));
     m_text.setFillColor(Color(112, 112, 112));
     m_react_back.setSize(m_size);
-    if (m_state_component != StateComponent::FOCUES) {
+    if (m_state_component != StateComponent::FOCUS) {
         m_state_component = StateComponent::NONE;
     }
 }
@@ -79,7 +79,7 @@ BaseComponent *Button::select(Event::MouseMoveEvent mouse_move) {
     bool is_select = m_react_back.getGlobalBounds().contains(mouse_move.x, mouse_move.y);
 
     if (is_select && m_state_component != StateComponent::SELECTED) {
-        m_state_component = StateComponent::FOCUES;
+        m_state_component = StateComponent::FOCUS;
         return this;
     } else {
         m_state_component = StateComponent::NONE;

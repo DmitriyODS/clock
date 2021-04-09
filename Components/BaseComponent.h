@@ -27,7 +27,7 @@ class BaseComponent;
 //// состояния компонента
 enum class StateComponent {
     NONE,
-    FOCUES,
+    FOCUS,
     CLICK,
     SELECTED,
     DISABLED
@@ -64,6 +64,12 @@ public:
 
     virtual ID getId();
 
+    virtual bool checkVisible();
+
+    virtual Items getMIdItem() const;
+
+    virtual void setMIdItem(Items mIdItem);
+
 protected:
     static ID s_generate_id;
 
@@ -75,6 +81,8 @@ protected:
     Vector2f m_position{};
     Callback m_click_listener{};
     Store *m_store{};
+
+    Items m_id_item{};
 };
 
 using ComponentsList = vector<BaseComponent *>;
