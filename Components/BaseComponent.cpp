@@ -34,7 +34,7 @@ StateComponent BaseComponent::getState() {
     return StateComponent::DISABLED;
 }
 
-void BaseComponent::setPosition(Vector2i position) {
+void BaseComponent::setPosition(Vector2f position) {
     m_position = position;
 }
 
@@ -52,4 +52,6 @@ ID BaseComponent::getId() {
 
 BaseComponent::BaseComponent() {
     m_id = s_generate_id++;
+
+    m_store = Store::getStore();
 }

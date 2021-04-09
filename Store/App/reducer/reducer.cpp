@@ -42,6 +42,10 @@ AppState appReducer(AppState state, Action action) {
             state.select_component = action.data;
             return state;
         }
+        case ActionTypes::SET_EXIT: {
+            state.m_exit = true;
+            return state;
+        }
         default: {
             return state;
         }

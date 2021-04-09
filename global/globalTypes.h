@@ -59,8 +59,41 @@ struct AlarmClock {
     bool enabled{};
 };
 
+/*
+ * Здесь описываются пункты меню
+ */
+enum Items : int {
+    NONE,
+    CLOCK,
+    ALARM_CLOCK,
+    STOPWATCH,
+    TIMER,
+    SETTINGS
+};
+
+struct IntentItem {
+    Items id_item{};
+    ID id_button{};
+    void *data{};
+};
+
 //// Лист будильников
 using AlarmClocks = vector<AlarmClock *>;
 
+extern const char *PATH_CLOCK_LOAD;
+
+extern const char *PATH_BACKGROUND_LOADING_SCREEN;
+
+extern const char *PATH_BACKGROUND_CARD;
+
+extern const char *PATH_BACKGROUND_MENU;
+
+extern const char *PATH_FONT_TEXT;
+
+extern const char *PATH_CLOCK_FACE_1;
+
+extern const char *PATH_CLOCK_POINT_1;
+
+extern const char *PATH_CARD_NOT_FOUND;
 
 #endif //CLOCK_GLOBALTYPES_H

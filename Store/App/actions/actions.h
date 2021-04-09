@@ -40,4 +40,7 @@ Action clearIntentOpenActivity();
 //// устанавливает выбранный компонент
 Action setSelectComponent(void *component);
 
+//// послать сигнал о завершении работы
+Action setExit();
+
 #endif //APP_ACTIONS_H

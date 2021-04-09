@@ -5,15 +5,21 @@
 #include <globalTypes.h>
 #include <SFML/Graphics.hpp>
 #include <functional>
+#include <string>
+#include <Store.h>
 
 using sf::RenderWindow;
 using sf::Vector2i;
+using sf::Vector2f;
 using sf::Event;
 using sf::Sprite;
 using sf::Texture;
 using std::function;
+using std::string;
 
 using std::vector;
+using sf::Font;
+using sf::Text;
 
 
 class BaseComponent;
@@ -48,7 +54,7 @@ public:
 
     virtual StateComponent getState();
 
-    virtual void setPosition(Vector2i position);
+    virtual void setPosition(Vector2f position);
 
     virtual Vector2i getPosition();
 
@@ -66,8 +72,9 @@ protected:
     Texture m_background_texture{};
     Sprite m_background_sprite{};
     StateComponent m_state_component{};
-    Vector2i m_position{};
+    Vector2f m_position{};
     Callback m_click_listener{};
+    Store *m_store{};
 };
 
 using ComponentsList = vector<BaseComponent *>;

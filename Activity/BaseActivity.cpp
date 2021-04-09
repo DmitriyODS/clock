@@ -59,6 +59,10 @@ void BaseActivity::start() {
 
         Event event{};
 
+        if (m_store->getState().app_state.m_exit) {
+            m_is_running = false;
+        }
+
         while (m_window->pollEvent(event)) {
             switch (event.type) {
                 case Event::Closed: {

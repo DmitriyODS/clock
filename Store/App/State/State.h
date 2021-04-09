@@ -16,6 +16,7 @@ struct AppState {
     bool dark_mode{};
     void *intent{};
     void *select_component{};
+    bool m_exit{};
 };
 
 #endif //APP_STATE_H

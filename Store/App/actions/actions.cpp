@@ -78,3 +78,10 @@ Action setSelectComponent(void *component) {
             component
     };
 }
+
+Action setExit() {
+    return Action{
+            ActionTypes::SET_EXIT,
+            ReducerTypes::APP
+    };
+}

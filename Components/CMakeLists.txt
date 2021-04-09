@@ -12,6 +12,48 @@ set(
         LoadingScreen/LoadingScreen.h
 )
 
+set(
+        MENU
+
+        Menu/Menu.cpp
+        Menu/Menu.h
+)
+
+set(
+        BUTTON
+
+        Button/Button.cpp
+        Button/Button.h
+)
+
+set(
+        CLOCK
+
+        Clock/Clock.cpp
+        Clock/Clock.h
+)
+
+set(
+        ALARM_CLOCK
+
+        AlarmClock/AlarmClock.cpp
+        AlarmClock/AlarmClock.h
+)
+
+set(
+        TIMER
+
+        Timer/Timer.cpp
+        Timer/Timer.h
+)
+
+set(
+        STOPWATCH
+
+        Stopwatch/Stopwatch.cpp
+        Stopwatch/Stopwatch.h
+)
+
 set(SFML_DIR "../SFML/lib/cmake/SFML")
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics network audio REQUIRED)
@@ -24,6 +66,12 @@ add_library(
         ${PROJECT_NAME}
         ${SRC}
         ${LOADING_SCREEN}
+        ${MENU}
+        ${BUTTON}
+        ${CLOCK}
+        ${TIMER}
+        ${STOPWATCH}
+        ${ALARM_CLOCK}
 )
 
 target_link_libraries(${PROJECT_NAME} global)
