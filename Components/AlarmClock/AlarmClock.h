@@ -10,6 +10,8 @@ public:
     AlarmClockScreen(const AlarmClockScreen &) = delete;
 
     AlarmClockScreen &operator=(const AlarmClockScreen &) = delete;
+
+    void render(RenderWindow *window) override;
 };
 
 

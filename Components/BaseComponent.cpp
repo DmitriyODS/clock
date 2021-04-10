@@ -17,7 +17,9 @@ BaseComponent *BaseComponent::mouseCollision(Event::MouseMoveEvent mouse_move) {
 
     bool is_select = checkCollision(mouse_move);
 
-    if (is_select) {
+    if (is_select && m_state_component != StateComponent::SELECTED) {
+        std::cout << this << "\tmouse collision" << std::endl;
+        std::cout << "Is selected - " << ((m_state_component == StateComponent::SELECTED) ? "True" : "False") << std::endl;
         m_state_component = StateComponent::FOCUS;
         return this;
     }
@@ -38,7 +40,7 @@ void BaseComponent::setState(StateComponent state_component) {
 }
 
 StateComponent BaseComponent::getState() {
-    return StateComponent::DISABLED;
+    return m_state_component;
 }
 
 void BaseComponent::setPosition(Vector2f position) {
@@ -85,6 +87,9 @@ BaseComponent::BaseComponent(Vector2f position, Vector2f size)
 void BaseComponent::mouseReleased(Event::MouseButtonEvent mouse_pressed) {
     if (m_state_component == StateComponent::DISABLED) return;
 
+    std::cout << this << "\tmouse released" << std::endl;
+    std::cout << "Is selected - " << ((m_state_component == StateComponent::SELECTED) ? "True" : "False") << std::endl;
+
     if (m_state_component == StateComponent::SELECTED) {
         m_state_component = StateComponent::DEFAULT;
         click();
@@ -96,6 +101,8 @@ void BaseComponent::mousePressed(Event::MouseButtonEvent mouse_pressed) {
 
     if (m_state_component == StateComponent::FOCUS) {
         m_state_component = StateComponent::SELECTED;
+        std::cout << this << "\tmouse pressed - selected" << std::endl;
+        std::cout << "Is selected - " << ((m_state_component == StateComponent::SELECTED) ? "True" : "False") << std::endl;
     }
 }
 

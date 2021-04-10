@@ -14,13 +14,13 @@ public:
 
     Menu &operator=(const Menu &) = delete;
 
-    vector<Button*> m_buttons{};
+    vector<Button *> m_buttons{};
 
     void render(RenderWindow *window) override;
 
     void clickListener(void *component);
 
-    BaseComponent * mouseCollision(Event::MouseMoveEvent mouse_move) override;
+    BaseComponent *mouseCollision(Event::MouseMoveEvent mouse_move) override;
 };
 
 

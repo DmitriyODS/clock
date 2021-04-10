@@ -10,6 +10,8 @@ const char *PATH_BACKGROUND_MENU = R"(C:\Users\osipo\projects\clock\src\img\scre
 
 const char *PATH_FONT_TEXT = R"(C:\Users\osipo\projects\clock\src\fonts\Roboto-Medium.ttf)";
 
+const char *PATH_FONT_TITLE_TEXT = R"(C:\Users\osipo\projects\clock\src\fonts\Roboto-Light.ttf)";
+
 const char *PATH_BACKGROUND_CARD = R"(C:\Users\osipo\projects\clock\src\img\screens\BackgroundCard.png)";
 
 const char *PATH_CLOCK_FACE_1 = R"(C:\Users\osipo\projects\clock\src\img\screens\ClockFace1.png)";
@@ -25,3 +27,5 @@ const char *PATH_CARD_VERSION = R"(C:\Users\osipo\projects\clock\src\img\screens
 const char *PATH_CARD_ABOUT = R"(C:\Users\osipo\projects\clock\src\img\screens\CardAbout.png)";
 
 const char *PATH_LOAD_SCREEN = R"(C:\Users\osipo\projects\clock\src\img\screens\LoadScreen.png)";
+
+const char *PATH_CARD_STOPWATCH = R"(C:\Users\osipo\projects\clock\src\img\screens\CardStopwatch.png)";

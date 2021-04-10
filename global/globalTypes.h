@@ -94,6 +94,8 @@ extern const char *PATH_BACKGROUND_MENU;
 
 extern const char *PATH_FONT_TEXT;
 
+extern const char *PATH_FONT_TITLE_TEXT;
+
 extern const char *PATH_CLOCK_FACE_1;
 
 extern const char *PATH_CLOCK_POINT_1;
@@ -107,5 +109,7 @@ extern const char *PATH_CARD_VERSION;
 extern const char *PATH_CARD_ABOUT;
 
 extern const char *PATH_LOAD_SCREEN;
+
+extern const char *PATH_CARD_STOPWATCH;
 
 #endif //CLOCK_GLOBALTYPES_H

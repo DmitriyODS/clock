@@ -52,7 +52,7 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
     button->setMIdItem(Items::ALARM_CLOCK);
     button->setClickListener([this](void *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::ALARM_CLOCK};
+        auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
 
@@ -62,7 +62,7 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
     button->setMIdItem(Items::STOPWATCH);
     button->setClickListener([this](void *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::NOT_FOUND};
+        auto *intentItem = new IntentItem{Items::STOPWATCH};
         m_store->dispatch(selectItemMenu(intentItem));
     });
 
@@ -91,7 +91,6 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
     button->setClickListener([this](void *) {
         m_store->dispatch(setExit());
     });
-    button->init();
 
     m_buttons.push_back(button);
 }
