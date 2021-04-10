@@ -17,7 +17,7 @@ BaseComponent *BaseComponent::mouseCollision(Event::MouseMoveEvent mouse_move) {
 
     bool is_select = checkCollision(mouse_move);
 
-    if (is_select && m_state_component != StateComponent::SELECTED) {
+    if (is_select) {
         std::cout << this << "\tmouse collision" << std::endl;
         std::cout << "Is selected - " << ((m_state_component == StateComponent::SELECTED) ? "True" : "False") << std::endl;
         m_state_component = StateComponent::FOCUS;
