@@ -45,7 +45,6 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
         auto *intentItem = new IntentItem{Items::CLOCK};
         m_store->dispatch(selectItemMenu(intentItem));
     });
-    button->init();
 
     m_buttons.push_back(button);
 
@@ -56,7 +55,6 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
         auto *intentItem = new IntentItem{Items::ALARM_CLOCK};
         m_store->dispatch(selectItemMenu(intentItem));
     });
-    button->init();
 
     m_buttons.push_back(button);
 
@@ -67,7 +65,6 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
         auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
-    button->init();
 
     m_buttons.push_back(button);
 
@@ -78,7 +75,6 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
         auto *intentItem = new IntentItem{Items::NOT_FOUND};
         m_store->dispatch(selectItemMenu(intentItem));
     });
-    button->init();
 
     m_buttons.push_back(button);
 
@@ -86,10 +82,9 @@ Menu::Menu(Vector2f position, Vector2f size) : BaseComponent(position, size) {
     button->setMIdItem(Items::SETTINGS);
     button->setClickListener([this](void *) {
         delete static_cast<IntentItem *>(m_store->getState().main_menu_state.intent_item);
-        auto *intentItem = new IntentItem{Items::NOT_FOUND};
+        auto *intentItem = new IntentItem{Items::SETTINGS};
         m_store->dispatch(selectItemMenu(intentItem));
     });
-    button->init();
     m_buttons.push_back(button);
 
     button = new Button("Exit", Vector2f(24, 820), Vector2f(470, 94));

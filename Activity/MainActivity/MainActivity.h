@@ -9,6 +9,7 @@
 #include <Timer/Timer.h>
 #include <MainMenu/actions/actions.h>
 #include <CardNotFound/CardNotFound.h>
+#include <Settings/Settings.h>
 
 
 class MainActivity : public BaseActivity {

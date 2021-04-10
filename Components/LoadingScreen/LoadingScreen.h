@@ -10,6 +10,12 @@ public:
     LoadingScreen(const LoadingScreen &) = delete;
 
     LoadingScreen &operator=(const LoadingScreen &) = delete;
+
+    void render(RenderWindow *window) override;
+
+private:
+    Font m_font{};
+    Text m_text_version{};
 };
 
 

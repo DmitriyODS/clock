@@ -22,11 +22,15 @@ void MainActivity::_initComponents() {
     auto *card_not_found = new CardNotFound(Vector2f(782, 291), Vector2f());
     card_not_found->setMIdItem(Items::NOT_FOUND);
 
+    auto *settings = new Settings(Vector2f(), Vector2f());
+    settings->setMIdItem(Items::SETTINGS);
+
     auto *alarm_clock = new AlarmClockScreen(Vector2f(1004, 236), Vector2f(573, 609));
     // TODO: доделать
 
     m_components.push_back(menu);
     m_components.push_back(clock_screen);
+    m_components.push_back(settings);
 //    m_components.push_back(alarm_clock);
     m_components.push_back(card_not_found);
 }

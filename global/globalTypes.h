@@ -100,4 +100,12 @@ extern const char *PATH_CLOCK_POINT_1;
 
 extern const char *PATH_CARD_NOT_FOUND;
 
+extern const char *PATH_AVAILABLE_SETTINGS;
+
+extern const char *PATH_CARD_VERSION;
+
+extern const char *PATH_CARD_ABOUT;
+
+extern const char *PATH_LOAD_SCREEN;
+
 #endif //CLOCK_GLOBALTYPES_H
